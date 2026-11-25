@@ -1,0 +1,19 @@
+****************************************************************************************************
+Processing step 8 of 8
+codegen: codegen: Generate "C++" source code from the compiled model
+Adding buffer: PrimaryTensorArena: size=89.0k section=.bss
+Adding buffer: PagingBuffer: size=32.0k section=.bss
+Adding "const" keyword to model data variable since it's in the .rodata data section
+Destination directory=C:/Users/Phong/AppData/Local/Temp/apack_aiml.mvp-compiler7912619355755985853/data/tflite/temp_918d6488b46d41068b6a26f5b5dd8e83/codegen
+Cleaning destination directory=C:/Users/Phong/AppData/Local/Temp/apack_aiml.mvp-compiler7912619355755985853/data/tflite/temp_918d6488b46d41068b6a26f5b5dd8e83/codegen
+Using the following "no-fallback" map:
+CONV_2D - True
+MAX_POOL_2D - True
+RESHAPE - False
+FULLY_CONNECTED - True
+SOFTMAX - False
+Stripped 4.4k of strings from the .tflite model
+Generated C:/Users/Phong/AppData/Local/Temp/apack_aiml.mvp-compiler7912619355755985853/data/tflite/temp_918d6488b46d41068b6a26f5b5dd8e83/codegen/keyword_spotting_on_off_v2_generated.hpp
+from C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\data\tflite\keyword_spotting_on_off_v2.tflite
+Generated C:/Users/Phong/AppData/Local/Temp/apack_aiml.mvp-compiler7912619355755985853/data/tflite/temp_918d6488b46d41068b6a26f5b5dd8e83/codegen/keyword_spotting_on_off_v2_generated_parameters.h
+Finished processing step 8 of 8 in 0.39 seconds

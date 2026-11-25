@@ -1,0 +1,13 @@
+model: keyword_spotting_on_off_v2.tflite
+
+graph_optimizer:
+  enabled: true
+
+memory_optimizer:
+  enabled: true
+
+codegen:
+  model_parameters_header:
+    enabled: true
+  model_header:
+    generate_micro_allocator_function: false

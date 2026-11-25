@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+data/raw/**/*.wav
+data/processed/*
+data/splits/*.json
+models/checkpoints/*
+models/exports/*.tflite
+*.npy
+!data/raw/**/.gitkeep

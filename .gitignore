@@ -1,0 +1,15 @@
+.codex/
+.projectlinkstore
+.silabsExtContext
+.slc-explorer/
+cmake_gcc/build/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+smart_voice_project/data/raw/**/*.wav
+smart_voice_project/data/processed/*
+smart_voice_project/data/splits/*.json
+smart_voice_project/models/checkpoints/*
+smart_voice_project/models/exports/*.tflite
+*.npy

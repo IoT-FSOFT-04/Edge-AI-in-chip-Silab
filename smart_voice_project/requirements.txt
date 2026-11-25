@@ -1,0 +1,9 @@
+tensorflow>=2.16,<2.21
+numpy>=1.26
+scipy>=1.11
+sounddevice>=0.5
+soundfile>=0.12
+PyYAML>=6.0
+tqdm>=4.66
+scikit-learn>=1.4
+matplotlib>=3.8

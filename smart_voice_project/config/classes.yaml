@@ -1,0 +1,22 @@
+classes:
+  - on
+  - off
+  - unknown
+  - background
+
+audio:
+  sample_rate: 16000
+  duration_seconds: 1.0
+
+features:
+  n_mels: 40
+  frame_length: 512
+  hop_length: 160
+  fft_length: 512
+
+training:
+  seed: 42
+  batch_size: 32
+  epochs: 40
+  learning_rate: 0.001
+  validation_split: 0.15

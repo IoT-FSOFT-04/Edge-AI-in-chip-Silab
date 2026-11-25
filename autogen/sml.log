@@ -1,0 +1,25 @@
+2026-11-25 17:54:45 - [INFO] (compiler.py:85): sml.log created by aiml/tool/compiler/compiler.py (Studio/SLC adapter).
+2026-11-25 17:54:45 - [INFO] (compiler.py:88): sml appends below.
+2026-11-25 17:54:45 - [DEBUG] (compiler.py:90): Input Directory: C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\data\tflite
+2026-11-25 17:54:45 - [INFO] (compiler.py:91): Output Directory: C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\output
+2026-11-25 17:54:45 - [INFO] (compiler.py:92): Part Number: efr32mg26b510f3200im68
+2026-11-25 17:54:45 - [DEBUG] (compiler.py:66): found sml executable: sml_win_amd64.exe
+2026-11-25 17:54:45 - [DEBUG] (compiler.py:96): got sml executable: C:\Users\Phong\.silabs\slt\installs\conan\p\aiml41a3bfdb2d14e\p\tool\compiler\sml_win_amd64.exe
+2026-11-25 17:54:45 - [DEBUG] (compiler.py:104): processing C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\data\tflite\blink.mlconf file
+2026-11-25 17:54:52 - [INFO] (compiler_cli.py:230): compile: streaming log file C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\output\sml.log
+2026-11-25 17:54:52 - [INFO] (compiler_cli_config.py:54): Using compiler config from --config: C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\data\tflite\blink.mlconf
+2026-11-25 17:54:52 - [INFO] (compiler_cli_config.py:88): use_config: compile flags do not override merged YAML/config (omit --use-config to apply compile overrides).
+2026-11-25 17:54:53 - [INFO] (platform.py:125): compile: normalized platform 'efr32mg26b510f3200im68' to 'efr32xg26'
+2026-11-25 17:54:54 - [INFO] (compile_tflite_model.py:180): Total compilation time: 1.20 seconds
+2026-11-25 17:54:54 - [INFO] (compiler_cli.py:296): compile: success
+2026-11-25 17:54:54 - [INFO] (compiler_cli.py:310): compile: wrote sl_ml_model_* helper template under C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\output
+2026-11-25 17:54:55 - [DEBUG] (compiler.py:120): sml executed with return code 0
+2026-11-25 17:54:55 - [DEBUG] (compiler.py:104): processing C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\data\tflite\keyword_spotting_on_off_v2.mlconf file
+2026-11-25 17:55:01 - [INFO] (compiler_cli.py:230): compile: streaming log file C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\output\sml.log
+2026-11-25 17:55:01 - [INFO] (compiler_cli_config.py:54): Using compiler config from --config: C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\data\tflite\keyword_spotting_on_off_v2.mlconf
+2026-11-25 17:55:01 - [INFO] (compiler_cli_config.py:88): use_config: compile flags do not override merged YAML/config (omit --use-config to apply compile overrides).
+2026-11-25 17:55:03 - [INFO] (platform.py:125): compile: normalized platform 'efr32mg26b510f3200im68' to 'efr32xg26'
+2026-11-25 17:55:06 - [INFO] (compile_tflite_model.py:180): Total compilation time: 3.29 seconds
+2026-11-25 17:55:06 - [INFO] (compiler_cli.py:296): compile: success
+2026-11-25 17:55:06 - [INFO] (compiler_cli.py:310): compile: wrote sl_ml_model_* helper template under C:\Users\Phong\AppData\Local\Temp\apack_aiml.mvp-compiler7912619355755985853\output
+2026-11-25 17:55:07 - [DEBUG] (compiler.py:120): sml executed with return code 0

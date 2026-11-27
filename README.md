@@ -1,100 +1,45 @@
-# Edge-AI-in-chip-Silab
+# Edge AI Voice Recognition and Device Control
 
-Project nhóm phát triển nhận diện âm thanh và điều khiển thiết bị bằng AI trên chip Silicon Labs EFR32MG26.
-
-## Nội dung project
-
-- Firmware Simplicity Studio/MicriumOS chạy TensorFlow Lite Micro.
-- Nhận dạng liên tục bằng microphone I2S.
-- Framework Python thu thập dữ liệu, huấn luyện, đánh giá và chuyển đổi mô hình sang INT8 TFLite.
-- Tài liệu triển khai mô hình mới lên board Silicon Labs.
-
-## Firmware hiện tại
-
-Tên project:
-
-```text
-aiml_soc_voice_control_light_blink_concurrent_efr32_micriumos
-```
-
-Firmware sử dụng:
-
-- Microphone I2S để thu âm thanh.
-- Mô hình `keyword_spotting_on_off_v2.tflite` để nhận dạng `on` và `off`.
-- Mô hình `blink.tflite` để điều khiển animation LED bằng PWM.
-- MicriumOS task để chạy inference định kỳ.
-- Concurrency load để giữ cả hai mô hình trong RAM.
-
-Các mô hình hiện tại nằm trong `config/tflite/`.
-
-## PC training framework
-
-Khung phát triển Python nằm trong [smart_voice_project/](smart_voice_project/README.md).
-
-Luồng phát triển:
-
-```text
-Thu âm .wav
-  -> tiền xử lý 16 kHz / Log-Mel
-  -> chia train/validation/test theo người nói
-  -> huấn luyện CNN
-  -> đánh giá
-  -> quantization INT8
-  -> export .tflite
-  -> thay mô hình vào firmware
-  -> build và nạp lên EFR32
-```
-
-## Cấu trúc chính
+Repository này tách phần firmware Silicon Labs và phần phát triển model trên PC:
 
 ```text
 .
-├── app.c                           # entry point ứng dụng
-├── voice_control_light.cc          # task nhận diện và điều khiển LED
-├── recognize_commands.cc           # xử lý kết quả inference
-├── config/tflite/                  # mô hình TFLite hiện tại
-├── smart_voice_project/
-│   ├── data/
-│   ├── src/
-│   ├── scripts/
-│   ├── models/
-│   ├── firmware/
-│   └── tests/
-├── cmake_gcc/                      # build CMake hiện tại
-└── *.slcp                          # cấu hình Simplicity SDK
+├── firmware/     # Project Simplicity Studio cho EFR32MG26 / BRD2608A
+└── training_pc/  # Thu dữ liệu, train/evaluate TensorFlow/Keras, export TFLite
 ```
 
-## Quy tắc dữ liệu
-
-- Không commit file dữ liệu cá nhân hoặc WAV chưa được nhóm phép.
-- Nhãn `on`: mẫu phát âm từ khóa bật.
-- Nhãn `off`: mẫu phát âm từ khóa tắt.
-- Nhãn `unknown`: câu hoặc từ khóa không thuộc hai lệnh.
-- Nhãn `background`: tiếng ồn phòng, quạt, TV và môi trường.
-- Tách test theo người nói để đánh giá khả năng tổng quát.
-
-## Hướng dẫn nhanh
-
-Thu thập dữ liệu và huấn luyện trên PC:
-
-```powershell
-cd smart_voice_project
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-
-python scripts/collect_audio.py --label on --speaker member01
-python scripts/collect_audio.py --label off --speaker member01
-python scripts/collect_audio.py --label unknown --speaker member01
-python scripts/collect_audio.py --label background --speaker member01
-
-python scripts/run_pipeline.py
-```
-
-Mô hình sau khi export nằm tại:
+## Quy trình phát triển dự kiến
 
 ```text
-smart_voice_project/models/exports/keyword_spotting.tflite
+BRD2608A microphone
+  -> gửi PCM về PC
+  -> lưu WAV và gán nhãn trong training_pc/data/
+  -> train/evaluate TensorFlow/Keras trên PC
+  -> convert và lượng tử hóa INT8 TFLite
+  -> đưa model vào firmware/config/tflite/
+  -> SLC Generate, build và kiểm thử trên EFR32MG26
 ```
 
-Xem hướng dẫn triển khai firmware tại [firmware/deployment.md](smart_voice_project/firmware/deployment.md).
+TensorFlow/Keras trên PC là framework huấn luyện. Silicon Labs AI/ML SDK trong
+firmware cung cấp các thành phần cần để tạo đặc trưng âm thanh và chạy inference
+bằng TensorFlow Lite Micro; không dùng AI/ML SDK để huấn luyện model.
+
+Các bước truyền audio từ board, tạo WAV, huấn luyện và convert model hiện mới là
+quy trình mục tiêu; các công cụ tương ứng trong `training_pc/` chưa được triển
+khai.
+
+## Bắt đầu
+
+- Xem [firmware/readme.md](firmware/readme.md) để hiểu project Silicon Labs hiện
+  tại và các model mẫu.
+- Xem [training_pc/README.md](training_pc/README.md) để biết cấu trúc dữ liệu và
+  quy trình phát triển model trên PC.
+
+## Trạng thái
+
+Đây là khung dự án. Firmware hiện có model mẫu nhận diện `on`/`off` và điều khiển
+LED0. Chưa có chức năng gửi audio PCM từ board về PC, dataset WAV của nhóm, hoặc
+model TensorFlow/Keras do nhóm huấn luyện.
+
+Khi train model mới, cần đồng bộ frontend, tensor shape, thứ tự nhãn và lượng tử
+hóa giữa PC và Audio Feature Generator trên firmware trước khi nạp thử.

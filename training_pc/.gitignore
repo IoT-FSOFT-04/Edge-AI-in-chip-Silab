@@ -4,8 +4,9 @@ __pycache__/
 .pytest_cache/
 data/raw/**/*.wav
 data/processed/*
-data/splits/*.json
 models/checkpoints/*
-models/exports/*.tflite
-*.npy
+models/tflite/*
 !data/raw/**/.gitkeep
+!data/processed/.gitkeep
+!models/checkpoints/.gitkeep
+!models/tflite/.gitkeep

@@ -1,0 +1,20 @@
+# Update this list when the team finalizes the voice commands.
+classes:
+  - on
+  - off
+  - unknown
+  - background
+
+audio:
+  sample_rate_hz: 16000
+  sample_format: pcm_s16le
+  channels: 1
+  clip_duration_ms: 1000
+
+# These are the current keyword model's frontend values, not yet a guarantee
+# that a future custom model will use the same settings.
+frontend_reference:
+  window_size_ms: 20
+  window_step_ms: 10
+  fft_length: 512
+  filterbank_channels: 68
